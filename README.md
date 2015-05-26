@@ -1,5 +1,5 @@
 # PipeJs
-PipeJs is a Command Line JavaScript interpreter for .NET. It means you can execute custom JavaScript from the command line, by passing JavaScript statements and script files as arguments. 
+PipeJs is a JavaScript Command Line Interpreter for .NET. It means you can execute custom JavaScript from the command line, by passing JavaScript statements and script files as arguments. 
 
 ## Quick Start
 
