@@ -25,7 +25,20 @@ namespace PipeJs
 
         static int Main(string[] args)
         {
-            var engine = new Engine();
+            var allowClr = args.Any() && args[0] == "--allow-clr";
+
+            if (allowClr)
+            {
+                args = args.Skip(1).ToArray();
+            }
+
+            var engine = new Engine(cfg =>  {
+                if(allowClr) 
+                {
+                    cfg.AllowClr();
+                }
+            });
+
             engine.SetValue("console", new JsConsole(engine));
 
             var arg = String.Join(" ", args);
