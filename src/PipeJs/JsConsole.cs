@@ -3,6 +3,8 @@ using Jint.Native;
 using Jint.Runtime;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -74,6 +76,23 @@ namespace PipeJs
         public void GroupEnd()
         {
             _indent--;
+        }
+
+        public string Start(string filename, string arguments)
+        {
+            Process notePad = new Process();
+
+            notePad.StartInfo.FileName = filename;
+            notePad.StartInfo.Arguments = arguments;
+            notePad.StartInfo.RedirectStandardOutput = true;
+            notePad.StartInfo.UseShellExecute = false;
+
+            notePad.Start();
+            StreamReader s = notePad.StandardOutput;
+            String output = s.ReadToEnd();
+            notePad.WaitForExit();
+
+            return output;
         }
     }
 }

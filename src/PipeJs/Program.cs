@@ -101,10 +101,16 @@ namespace PipeJs
             }
             catch (ParserException e)
             {
+                Error("The script could not be parsed:");
                 Error(e.Message);
-                Error(fullScript);
 
                 return -2;
+            }
+            catch (JavaScriptException e)
+            {
+                Error(e.Error.ToString());
+                
+                return -3;
             }
 
             return 0;
